@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <div id="panel"></div>
+    <script>
+      function add(a, b) {
+        total = parseInt(a) + parseInt(b);
+        return total;
+      }
+      document.getElementById("panel").innerText = add(2, 5);
+      const res = add(1, 1);
+      console.log(res);
+
+      const addResult = (a, b) => {
+        return Math.round(a + b);
+        // console.log("console在這不會出現，要放在return前");
+      };
+      console.log(addResult(5.5, 5.1));
+      //顯示"我是???，血型???"
+      //   const intro = (name, blood) => {
+      //     return `我是${name}，血型${blood}`;
+      //   };
+      //   console.log(intro("eric", "AB"));
+      const intro = (name, blood) => `我是eric，血型AB`;
+    </script>
+  </body>
+</html>
