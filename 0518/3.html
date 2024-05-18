@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <div id="app">
+      {{res}}
+      <button @click="add">+</button>
+      <button @click="reduce">-</button>
+      <br />
+      <p>總價: {{parse()}}</p>
+      <p>總價: {{parse_dollar()}} 美金</p>
+    </div>
+
+    <script src="https://unpkg.com/vue"></script>
+    <script>
+      Vue.createApp({
+        data() {
+          return {
+            res: 0,
+            count: 1,
+            price: 100,
+            dollar: 0,
+          };
+        },
+        methods: {
+          add() {
+            // this.res = this.res + 1;
+            if (this.res >= 10) return;
+            this.res += this.count;
+          },
+          reduce() {
+            // this.res = this.res - 1;
+            if (this.res === 0) return;
+            this.res -= this.count;
+          },
+          parse() {
+            return this.price * this.res;
+          },
+          parse_dollar() {
+            return this.price * this.res * 30;
+          },
+        },
+      }).mount("#app");
+    </script>
+  </body>
+</html>
