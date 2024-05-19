@@ -122,11 +122,20 @@
             // const prod2 =
             //   this.cartLists[1]["price"] * this.cartLists[1]["count"];
             // return prod1 + prod2;
-            let price = 0;
-            for (let index = 0; index < this.cartLists.length; index++) {
-              price +=
-                this.cartLists[index]["price"] * this.cartLists[index]["count"];
-            }
+
+            // let price = 0;
+            // for (let index = 0; index < this.cartLists.length; index++) {
+            //   price +=
+            //     this.cartLists[index]["price"] * this.cartLists[index]["count"];
+            // }
+            // return price;
+
+            //精簡寫法
+            const price = this.cartLists.reduce(
+              (total, item) => total + item.price * item.count,
+              0
+            );
+
             return price;
           },
         },
