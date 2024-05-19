@@ -43,8 +43,9 @@
           <span>{{cartItem['count']}}</span>
           <button @click="add(cartIndex)">+</button>
         </div>
-        <p class="price">{{sum(cartIndex)}}</p>
+        <p class="price"></p>
       </div>
+      <div>Total: $ {{total}}</div>
       <!-- <div class="item">
         <img :src="cartLists[1]['img']" alt="" />
         <div class="title">
@@ -112,10 +113,21 @@
             if (this.cartLists[index]["count"] === 0) return;
             this.cartLists[index]["count"]--;
           },
-          sum(index) {
-            return (
-              this.cartLists[index]["price"] * this.cartLists[index]["count"]
-            );
+        },
+        computed: {
+          total() {
+            //想法
+            // const prod1 =
+            //   this.cartLists[0]["price"] * this.cartLists[0]["count"];
+            // const prod2 =
+            //   this.cartLists[1]["price"] * this.cartLists[1]["count"];
+            // return prod1 + prod2;
+            let price = 0;
+            for (let index = 0; index < this.cartLists.length; index++) {
+              price +=
+                this.cartLists[index]["price"] * this.cartLists[index]["count"];
+            }
+            return price;
           },
         },
       }).mount("#app");
