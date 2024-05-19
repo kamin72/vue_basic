@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>test</title>
+  </head>
+  <body>
+    <div id="app">
+      <!-- method_1 -->
+      <p>Hello, {{name}}---</p>
+      <p>{{age}}歲</p>
+      <!-- method_2 -->
+      <h6 v-text="`live: ${live}`"></h6>
+      <p>live:{{live?"活著":"死亡"}}</p>
+      <p v-html="content"></p>
+      <p>{{name}}，要去聽 {{music[1]}}</p>
+      <p>{{name}}，會 {{skills['f2e'][0]}}</p>
+      <p>{{name}}，會 {{skills['b2e'][2]}}</p>
+    </div>
+    <script src="https://unpkg.com/vue"></script>
+    <!-- <script src="https://unpkg.com/vue@3.4.27/dist/vue.global.js"></script> -->
+    <script>
+      // debugger
+      //   console.log(Vue);
+      const app = Vue.createApp({
+        data() {
+          return {
+            name: "apple",
+            age: 12,
+            live: true,
+            music: ["hip hop", "one ok rock", "May Day"],
+            skills: {
+              f2e: ["vue", "react"],
+              b2e: ["php", "node.js", "ASP.net"],
+            },
+            gender: null,
+            content: "<div style= 'color:red'>123</div>",
+          };
+        },
+      });
+      app.mount("#app");
+    </script>
+  </body>
+</html>
