@@ -38,14 +38,14 @@
           };
         },
         methods: {
-          // randColor(){
-          // let n =  Math.random()*10
-          // }
           addW() {
             if (this.widths === 9) return;
             this.widths++;
             //換顏色
-            this.bg = `#${this.widths}${this.widths}${this.widths}`;
+            const rand1 = Math.floor(Math.random() * 10);
+            const rand2 = Math.floor(Math.random() * 10);
+            const rand3 = Math.floor(Math.random() * 10);
+            this.bg = `#${rand1}${rand2}${rand3}`;
           },
           reduceW() {
             if (this.widths === 1) return;

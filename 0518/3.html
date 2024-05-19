@@ -11,8 +11,8 @@
       <button @click="add">+</button>
       <button @click="reduce">-</button>
       <br />
-      <p>總價: {{parse()}}</p>
-      <p>總價: {{parse_dollar()}} 美金</p>
+      <p>總價: {{parse}}</p>
+      <p>總價: {{parse_dollar}} 美金</p>
     </div>
 
     <script src="https://unpkg.com/vue"></script>
@@ -37,11 +37,19 @@
             if (this.res === 0) return;
             this.res -= this.count;
           },
+          // parse() {
+          //   return this.price * this.res;
+          // },
+          // parse_dollar() {
+          //   return this.price * this.res * 30;
+          // },
+        },
+        computed: {
+          parse_dollar() {
+            return (this.price * this.res) / 30;
+          },
           parse() {
             return this.price * this.res;
-          },
-          parse_dollar() {
-            return this.price * this.res * 30;
           },
         },
       }).mount("#app");
