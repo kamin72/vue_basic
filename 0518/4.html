@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      .box {
+        width: 2rem;
+        height: 2rem;
+        background-color: #ccc;
+      }
+      .red {
+        background-color: red;
+      }
+      .green {
+        background-color: green;
+      }
+      .yellow {
+        background-color: yellow;
+      }
+      .blue {
+        background-color: blue;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="app">
+      {{tab}}
+      <button @click="switch_">換色</button>
+      <!-- <div class="box" :class="tab? 'red':'green'"></div> -->
+      <div class="box" :class="color"></div>
+    </div>
+
+    <script src="https://unpkg.com/vue"></script>
+    <script>
+      Vue.createApp({
+        data() {
+          return {
+            tab: true,
+            color: ["red", "blue", "green", "yellow"],
+            index: -1,
+          };
+        },
+        methods: {
+          switch_() {
+            this.index++;
+            for (let i = 0; i < this.color.length; i++) {
+              if (this.index == i) {
+                console.log(this.color[i]);
+                return this.color[i];
+              }
+            }
+          },
+        },
+      }).mount("#app");
+    </script>
+  </body>
+</html>
