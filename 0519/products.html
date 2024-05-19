@@ -10,6 +10,7 @@
         height: 100px;
       }
       .item {
+        margin: 20px;
         width: 50%;
         display: flex;
         align-items: center;
@@ -18,10 +19,21 @@
       .title {
         flex-basis: 100px;
       }
+      .info {
+        width: 50%;
+        display: flex;
+        justify-content: space-around;
+      }
     </style>
   </head>
   <body>
     <div id="app">
+      <div class="info">
+        <p>商品列表</p>
+        <p>商品資訊</p>
+        <p>單價</p>
+        <p>評分</p>
+      </div>
       <div
         class="item"
         v-for="(productItem, productIndex) in products"
