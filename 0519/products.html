@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      img {
+        width: 100px;
+        height: 100px;
+      }
+      .item {
+        width: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: space-around;
+      }
+      .title {
+        flex-basis: 100px;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="app">
+      <div
+        class="item"
+        v-for="(productItem, productIndex) in products"
+        :key="products['id']">
+        <img :src="productItem['image']" alt="" />
+        <p class="title">{{productItem['title']}}</p>
+        <p>NT$ {{productItem['price']}}</p>
+        <!-- <p v-for="n in 5">{{productItem['rating']['rate']}}</p> -->
+        <p>
+          {{productItem?.rating.rate}}({{productItem?.rating.count}})
+          <span v-for="n in parseInt(productItem?.rating.rate)">&#9733; </span>
+          <span v-for="n in 5-parseInt(productItem?.rating.rate)">
+            &#9734;</span
+          >
+        </p>
+      </div>
+    </div>
+
+    <script src="https://unpkg.com/vue"></script>
+    <script>
+      Vue.createApp({
+        data() {
+          return {
+            products: [],
+          };
+        },
+        methods: {
+          test() {
+            return 1;
+          },
+          rating() {
+            let r = parseInt(this.products["rating"]["rate"]);
+            return r;
+          },
+        },
+        mounted() {
+          //畫面渲染完開始執行作用域中的東西
+          //要貨車來
+          fetch("https://fakestoreapi.com/products")
+            .then((res) => {
+              //貨車到了
+              return res.json();
+            })
+            .then((json) => {
+              // 貨車卸貨
+              console.log(json);
+              //   放到倉庫裡
+              this.products = json;
+            });
+        },
+      }).mount("#app");
+    </script>
+  </body>
+</html>
