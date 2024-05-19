@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      img {
+        width: 5rem;
+        padding: 10px;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="app">
+      <img src="/vue_basic/0519/image/Shinnosuke1.jpg" alt="" />
+      <img
+        :src="imgUrl"
+        :style="{
+        width: `${widths}rem`,
+        border: `2px solid ${bg}`,
+        backgroundColor: bg,
+       
+      }"
+        alt="" />
+      <button @click="addW">放大</button>
+      <button @click="reduceW">縮小</button>
+    </div>
+
+    <script src="https://unpkg.com/vue"></script>
+    <script>
+      Vue.createApp({
+        data() {
+          return {
+            imgUrl: "/vue_basic/0519/image/Shinnosuke1.jpg",
+            bg: "#634",
+            widths: 2,
+          };
+        },
+        methods: {
+          // randColor(){
+          // let n =  Math.random()*10
+          // }
+          addW() {
+            if (this.widths === 9) return;
+            this.widths++;
+            //換顏色
+            this.bg = `#${this.widths}${this.widths}${this.widths}`;
+          },
+          reduceW() {
+            if (this.widths === 1) return;
+            this.widths--;
+            //換顏色
+            this.bg = `#${this.widths}${this.widths}${this.widths}`;
+          },
+        },
+      }).mount("#app");
+    </script>
+  </body>
+</html>

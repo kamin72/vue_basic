@@ -27,9 +27,9 @@
   <body>
     <div id="app">
       {{tab}}
-      <button @click="switch_">換色</button>
-      <!-- <div class="box" :class="tab? 'red':'green'"></div> -->
-      <div class="box" :class="color"></div>
+      <button @click="tab = !tab">換色</button>
+      <div class="box" :class="tab? 'red':'green'"></div>
+      <!-- <div class="box" :class="color"></div> -->
     </div>
 
     <script src="https://unpkg.com/vue"></script>
