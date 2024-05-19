@@ -26,7 +26,7 @@
     <div id="app">
       <h2>Shopping Cart</h2>
       <div class="item">
-        <img src="/vue_basic/0519/image/Shinnosuke1.jpg" alt="" />
+        <img :src="cartLists[0]['img']" alt="" />
         <div class="title">
           <p class="name">{{cartLists[0]['title']}}</p>
           <p class="subtitle">{{cartLists[0]['subtitle']}}</p>
@@ -39,7 +39,7 @@
         <p class="price">{{sum(0)}}</p>
       </div>
       <div class="item">
-        <img src="/vue_basic/0519/image/Shinnosuke12.png" alt="" />
+        <img :src="cartLists[1]['img']" alt="" />
         <div class="title">
           <p class="name">{{cartLists[1]['title']}}</p>
           <p class="subtitle">{{cartLists[1]['subtitle']}}</p>
@@ -75,6 +75,7 @@
                 subtitle: "副標題",
                 price: 100,
                 count: 1,
+                img: "/vue_basic/0519/image/Shinnosuke1.jpg",
               },
               {
                 id: 2,
@@ -82,6 +83,7 @@
                 subtitle: "副標題",
                 price: 200,
                 count: 1,
+                img: "/vue_basic/0519/image/Shinnosuke12.png",
               },
               {
                 id: 3,
