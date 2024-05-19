@@ -21,13 +21,26 @@
       flex-basis: 100px;
       font-weight: bold;
     }
+    .title {
+      width: 50%;
+      display: flex;
+      justify-content: space-around;
+    }
   </style>
   <body>
+    <h2>Shopping Cart</h2>
+    <div class="title">
+      <div></div>
+      <div>商品名稱</div>
+      <div>數量</div>
+      <div>單價</div>
+    </div>
+    <hr />
+
     <div id="app">
       <!-- vue迴圈，of用於一般陣列，in用於object陣列 -->
       <!-- <p v-for="n in 10">{{n}}</p> -->
 
-      <h2>Shopping Cart</h2>
       <!-- key只能是唯一值 -->
       <div
         class="item"
@@ -43,7 +56,7 @@
           <span>{{cartItem['count']}}</span>
           <button @click="add(cartIndex)">+</button>
         </div>
-        <p class="price"></p>
+        <p class="price">{{cartItem['price']}}</p>
       </div>
       <div>Total: $ {{total}}</div>
       <!-- <div class="item">
@@ -97,7 +110,7 @@
                 id: 3,
                 title: "商品3",
                 subtitle: "副標題",
-                price: 200,
+                price: 150,
                 count: 1,
                 img: "/vue_basic/0519/image/Shinnosuke6.png",
               },
