@@ -24,22 +24,26 @@
   </style>
   <body>
     <div id="app">
-      <!-- vue迴圈，in用於陣列，of用於object -->
+      <!-- vue迴圈，of用於一般陣列，in用於object陣列 -->
       <!-- <p v-for="n in 10">{{n}}</p> -->
 
       <h2>Shopping Cart</h2>
-      <div class="item" v-for="(cartItem, cartIndex) in cartLists">
-        <img :src="cartLists[cartIndex]['img']" alt="" />
+      <!-- key只能是唯一值 -->
+      <div
+        class="item"
+        v-for="(cartItem, cartIndex) in cartLists"
+        :key="cartItem['id']">
+        <img :src="cartItem['img']" alt="" />
         <div class="title">
-          <p class="name">{{cartLists[cartIndex]['title']}}</p>
-          <p class="subtitle">{{cartLists[cartIndex]['subtitle']}}</p>
+          <p class="name">{{cartItem['title']}}</p>
+          <p class="subtitle">{{cartItem['subtitle']}}</p>
         </div>
         <div class="amount">
-          <button @click="reduce(0)">-</button>
-          <span>{{cartLists[cartIndex]['count']}}</span>
-          <button @click="add(0)">+</button>
+          <button @click="reduce(cartIndex)">-</button>
+          <span>{{cartItem['count']}}</span>
+          <button @click="add(cartIndex)">+</button>
         </div>
-        <p class="price">{{sum(0)}}</p>
+        <p class="price">{{sum(cartIndex)}}</p>
       </div>
       <!-- <div class="item">
         <img :src="cartLists[1]['img']" alt="" />
